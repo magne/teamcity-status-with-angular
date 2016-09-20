@@ -2,15 +2,15 @@ angular.module('buildApp').factory('buildFactory', function($http) {
 	var factory = {};
 	  
 	var getBuildTypes = function() {
-		return $http.get('http://tc/guestAuth/app/rest/buildTypes?locator=start:0,count:100');
+		return $http.get('http://teamcity/guestAuth/app/rest/buildTypes?locator=start:0,count:100');
 	};
 	
 	var getBuildStatus = function(id) {
-		return $http.get('http://tc/guestAuth/app/rest/builds?locator=buildType:' + id + ',start:0,count:1&fields=build(id,status,state,buildType(name,id,projectName,paused))');
+		return $http.get('http://teamcity/guestAuth/app/rest/builds?locator=buildType:' + id + ',start:0,count:1&fields=build(id,status,state,buildType(name,id,projectName,paused))');
 	};
 	
 	factory.getRunningBuilds = function() {
-		return $http.get('http://tc/guestAuth/app/rest/builds?locator=running:true');
+		return $http.get('http://teamcity/guestAuth/app/rest/builds?locator=running:true');
 	};
 	  
 	factory.getBuilds = function() {
